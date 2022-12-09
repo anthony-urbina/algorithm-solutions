@@ -9,7 +9,8 @@ if equal, it's a palindrome
 else, it's not
 */
 
-export default function checkPalindrome(word) {
+// eslint-disable-next-line no-unused-vars
+function checkPalindrome(word) {
   let container = '';
   for (let i = 0; i < word.length; i++) {
     container += word[word.length - i - 1];
