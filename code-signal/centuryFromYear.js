@@ -11,7 +11,8 @@ round up to nearest Int to get century
 return century
 */
 
-export default function getCentury(year) {
+// eslint-disable-next-line no-unused-vars
+function getCentury(year) {
   const decimal = year / 100;
   const century = Math.ceil(decimal);
   return century;
