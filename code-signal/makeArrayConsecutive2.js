@@ -10,23 +10,26 @@ that. Help him figure out the minimum number of additional statues needed.
 
 /*
 create a container array
-creata a delta variable
+creata a missing variable
 sort the array from least to greatest
 loop through the array
 evaulate elements two at a time
 if delta between element a and element b is greater than 1
-add the diff of b - a to delta
+add the diff of b - a to missing
 
 return delta
 */
 
 function solution(statues) {
-  const sorted = statues.sort();
-  let delta = 0;
+  const sorted = statues.sort((a, b) => a - b);
+  let missing = 0;
   for (let i = 0; i < sorted.length; i++) {
-    if ((sorted[i + 1] - sorted[i]) !== 1 && sorted[i + 1] !== undefined) {
-      delta += ((sorted[i + 1] - sorted[i]) - 1);
+    const a = sorted[i];
+    const b = sorted[i + 1];
+    const delta = b - a;
+    if (delta > 1 && b !== undefined) {
+      missing += delta - 1;
     }
   }
-  return delta;
+  return missing;
 }
