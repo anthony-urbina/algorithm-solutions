@@ -19,29 +19,33 @@ return false
 else return true
 */
 
+/*
+by removing no more than 1 element in the array
+if b - a is a negative number or equal to 0
+counter++
+if the element before a is less than a
+keep a
+else if the element after b is greater than b
+keep b
+else if they are equal
+keep a
+*/
+
 function checkSequence(sequence) {
+  const copy = [...sequence];
   let counter = 0;
   const container = [];
-  for (let i = 0; i < sequence.length; i++) {
-    const a = sequence[i];
-    const b = sequence[i + 1];
-    if (b > a || i === sequence.length - 1) {
-      container.push(a);
-    } else {
-      container.push(a);
-      i++;
+  for (let i = 1; i < sequence.length; i++) {
+    const previous = sequence[i - 1];
+    const current = sequence[i];
+    if (previous >= current) {
       counter++;
+
+      if (previous === current) {
+        break;
+      }
     }
   }
-
-  for (let i = 0; i < container.length; i++) {
-    const a = container[i];
-    const b = container[i + 1];
-    if (b <= a) {
-      counter++;
-    }
-  }
-
   if (counter > 1) {
     return false;
   } else {
