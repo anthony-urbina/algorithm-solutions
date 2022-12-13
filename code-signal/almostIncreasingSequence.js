@@ -9,26 +9,18 @@ no more than one element from the array.
 /*
 create a counter variable
 loop through elements in the array
-a = i
-b = i + 1
-if b is not greater than a
+beforePrevious = sequence @ i - 2
+previous = sequence @ i - 1
+current = sequence @ i
+afterCurrent = sequence @ i + 1
+if current is equal to or less than previous
 add 1 to the counter
-loop through all elements
-if counter is greater than 1
-return false
+check if current is less than or equal to beforePrevious
+check if previous is greater than or equal to afterCurrent
+if true return false
+exit loop
+if counter is greater than 1 return false
 else return true
-*/
-
-/*
-by removing no more than 1 element in the array
-if b - a is a negative number or equal to 0
-counter++
-if the element before a is less than a
-keep a
-else if the element after b is greater than b
-keep b
-else if they are equal
-keep a
 */
 
 function checkSequence(sequence) {
