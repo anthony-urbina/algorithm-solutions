@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /*
 Given an array of strings, return
 another array containing all of its
@@ -28,7 +29,6 @@ b should not be compared against itself
 repeat this process for all elements
 */
 
-// eslint-disable-next-line no-unused-vars
 function allLongestStrings(inputArray) {
   const container = [];
   for (let i = 0; i < inputArray.length; i++) {
@@ -41,4 +41,21 @@ function allLongestStrings(inputArray) {
     }
   }
   return container;
+}
+
+// found a solution that was better than mine
+function solution(inputArray) {
+  // initializes biggest with first element of the array
+  let biggest = [inputArray[0]];
+  for (let i = 1; i < inputArray.length; i++) {
+    // if element length is equal to biggest[0] length, push to biggest
+    if (inputArray[i].length === biggest[0].length) {
+      biggest.push(inputArray[i]);
+    }
+    // if element length is larger than biggest[0] length, reset biggest, and set element to biggest[0]
+    if (inputArray[i].length > biggest[0].length) {
+      biggest = [inputArray[i]];
+    }
+  }
+  return biggest;
 }
