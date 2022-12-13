@@ -8,12 +8,10 @@ that are suitable for the CodeBots
 */
 
 /*
-create foundZero var
 create total var
-loop through array
-if index is equal to foundZero skip this iteration
-if zero
-save index to var foundZero
+loop through array by column
+loop through array by row
+if index is is equal to 0 move on to the next column
 else
 add to total
 */
