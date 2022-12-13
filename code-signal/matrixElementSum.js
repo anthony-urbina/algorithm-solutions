@@ -22,13 +22,11 @@ function sumMatrixElements(matrix) {
   const foundZero = [];
   let total = 0;
 
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
-      if (foundZero.includes(j)) continue;
-      if (matrix[i][j] === 0) {
-        foundZero.push(j);
-      } else {
-        total += matrix[i][j];
+  for (let i = 0; i < matrix[0].length; i++) {
+    for (let j = 0; j < matrix.length; j++) {
+      if (matrix[j][i] === 0) break;
+      else {
+        total += matrix[j][i];
       }
     }
   }
