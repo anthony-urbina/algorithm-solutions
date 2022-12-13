@@ -32,23 +32,19 @@ keep a
 */
 
 function checkSequence(sequence) {
-  const copy = [...sequence];
   let counter = 0;
   const container = [];
   for (let i = 1; i < sequence.length; i++) {
+    const beforePrevious = sequence[i - 2];
     const previous = sequence[i - 1];
     const current = sequence[i];
+    const afterCurrent = sequence[i + 1];
+
     if (previous >= current) {
       counter++;
+      if (current <= beforePrevious && afterCurrent <= previous) return false;
 
-      if (previous === current) {
-        break;
-      }
     }
   }
-  if (counter > 1) {
-    return false;
-  } else {
-    return true;
-  }
+  return !(counter > 1);
 }
