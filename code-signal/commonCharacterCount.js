@@ -44,3 +44,16 @@ function commonCount(s1, s2) {
   }
   return total;
 }
+
+// found a better solution than mine
+
+function solution(s1, s2) {
+  // loops through s1
+  for (var i = 0; i < s1.length; i++) {
+    // replace method replaces param1 with param2 then returns a new string
+    // if an s1 letter is found in s2 it will get replaced by a '!'
+    s2 = s2.replace(s1[i], '!');
+  }
+  // count the "!'s" and return them
+  return s2.replace(/[^!]/g, '').length;
+}
