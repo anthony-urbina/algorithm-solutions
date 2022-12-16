@@ -38,3 +38,29 @@ function sortByHeight(a) {
   }
   return copyOfA;
 }
+
+// found a solution that is better than mine
+function solution(a) {
+  // pushes all non-tree numbers to people array
+  var people = [];
+  for (var i = 0; i < a.length; i++) {
+    if (a[i] > 0) {
+      people.push(a[i]);
+    }
+  }
+  // sorts people height in ascending order
+  people.sort(function (a, b) {
+    return a - b;
+  });
+  // loops through original array
+  // if element is not a tree, replace it with the first element from the people array
+  for (var j = 0; j < a.length; j++) {
+    if (a[j] > 0) {
+      a[j] = people.shift();
+    }
+  }
+
+  return a;
+}
+// this was an overall better solution because they took the more practical
+// approach of moving the humans, whereas i moved the trees
