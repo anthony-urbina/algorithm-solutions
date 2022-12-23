@@ -26,3 +26,16 @@ function addBorder(picture) {
   mappedPicture.unshift(border);
   return mappedPicture;
 }
+
+// found more concise solution
+function solution(picture) {
+  // can predict what length will be
+  var width = picture[0].length + 2;
+  return [
+    // uses repeat to make border
+    '*'.repeat(width),
+    // spread syntax to access the elements of picture
+    ...picture.map(line => `*${line}*`),
+    '*'.repeat(width)
+  ];
+}
