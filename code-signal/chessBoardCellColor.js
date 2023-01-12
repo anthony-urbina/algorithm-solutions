@@ -32,3 +32,26 @@ function chessBoardCellColor(cell1, cell2) {
     }
   }
 }
+
+// found a better solution
+function solution(cell1, cell2) {
+  // creates board object where they assign numbers to board letters
+  const board = {
+    A: 1,
+    B: 2,
+    C: 3,
+    D: 4,
+    E: 5,
+    F: 6,
+    G: 7,
+    H: 8
+  };
+  // adds cell letter with cell board corresponding number
+  const total1 = board[cell1[0]] + parseInt(cell1[1]);
+  const total2 = board[cell2[0]] + parseInt(cell2[1]);
+  // if the total is divisible by 2, return true
+  // else return false
+  return total1 % 2 === total2 % 2;
+}
+// works because they alternate even and odds between the letters
+// this represents the alternating pattern of dark and light squares
