@@ -36,14 +36,35 @@ function smallest(a) {
     }
   }
   let winner = null;
-  let value = Infinity;
+  let total = Infinity;
   for (const key in record) {
-    if (record[key] < value) {
-      value = record[key];
+    if (record[key] < total) {
+      total = record[key];
       winner = Number(key);
-    } else if (record[key] === value) {
+    } else if (record[key] === total) {
       winner = Number(key) > winner ? winner : Number(key);
 
+    }
+  }
+  return winner;
+}
+
+// found a better solution than mine
+// straight to the point
+// gets diff and compares it to total immediatley
+// instead of putting it in an object and comparing values later
+function solution(a) {
+  let winner = a[0];
+  let total = Number.MAX_VALUE;
+
+  for (let i = 0; i < a.length; i++) {
+    let diff = 0;
+    for (let j = 0; j < a.length; j++) {
+      diff += Math.abs(a[j] - a[i]);
+    }
+    if (diff < total) {
+      winner = a[i];
+      total = diff;
     }
   }
   return winner;
