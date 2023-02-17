@@ -6,27 +6,53 @@ function rearrange(inputArray) {
   // return true if possible, false if not
 
   // figure out all possible combinations
-  // align them like so
-  // run through each combination
+  // loop through each combination
   // if one differs by 1, return true, else return false
-  // 0 1 2 3
-  // 4 digits 24 possible
-  // 0 1 2 3
-  // 0 1 3 2
-  // 0 2 3 1
-  // 0 2 1 3
-  // 0 3 1 2
-  // 0 3 2 1
 
-  // 0 1 2
-  // 3 digits 6 possible
-  // 0 1 2
-  // 0 2 1
-  // 1 2 0
-  // 1 0 2
-  // 2 0 1
-  // 2 1 0
-  // 2 digits 2 possible
-  // loop through all elements
-  //
+  const allCombinations = permutator(inputArray);
+
+  for (let i = 0; i < allCombinations.length; i++) {
+    const arr = allCombinations[i];
+    if (check(arr)) return true;
+  }
+  return false;
+}
+
+function diff(s1, s2) {
+  let count = 0;
+  for (let i = 0; i < s1.length; i++) {
+    if (s1[i] !== s2[i]) count++;
+  }
+  return count;
+}
+
+function check(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    const s1 = arr[i];
+    const s2 = arr[i + 1];
+    if (diff(s1, s2) !== 1) return false;
+  }
+  return true;
+}
+
+function permutator(inputArr) {
+  const results = [];
+
+  function permute(arr, memo) {
+    let cur;
+    memo = memo || [];
+
+    for (let i = 0; i < arr.length; i++) {
+      cur = arr.splice(i, 1);
+      if (arr.length === 0) {
+        results.push(memo.concat(cur));
+      }
+      permute(arr.slice(), memo.concat(cur));
+      arr.splice(i, 0, cur[0]);
+    }
+
+    return results;
+  }
+
+  return permute(inputArr);
 }
